@@ -67,7 +67,7 @@ vows.describe('config file parsing').addBatch({
 			}
 		},
 		'should throw an error': function(err, options) {
-			assert.equal(err, 'JSON config file parsing failed (SyntaxError: Unexpected token t in JSON at position 4)');
+			assert.ok(err.indexOf('JSON config file parsing failed (SyntaxError: Unexpected token') === 0);
 		}
 	}
 }).export(module);
