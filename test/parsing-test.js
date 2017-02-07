@@ -1,7 +1,7 @@
 var vows = require('vows'),
 	assert = require('assert'),
-	path = require('path')
-program = require('../');
+	path = require('path'),
+	program = require('../');
 
 function importFile(filename, argv) {
 	argv = argv || [];
@@ -49,25 +49,25 @@ vows.describe('config file parsing').addBatch({
 	'should fail when trying to parse an unknown file': {
 		topic: function() {
 			try {
-				importFile(path.join(fixtures, 'nonexistent.json'))
+				importFile(path.join(fixtures, 'nonexistent.json'));
 			} catch (err) {
-				this.callback(err)
+				this.callback(err);
 			}
 		},
 		'should throw an error': function(err, options) {
-			assert.equal(err, 'Config file "' + path.join(fixtures, 'nonexistent.json') + '" cannot be found!')
+			assert.equal(err, 'Config file "' + path.join(fixtures, 'nonexistent.json') + '" cannot be found!');
 		}
 	},
 	'should fail when trying to parse a broken file': {
 		topic: function() {
 			try {
-				importFile(path.join(fixtures, 'broken.json'))
+				importFile(path.join(fixtures, 'broken.json'));
 			} catch (err) {
-				this.callback(err)
+				this.callback(err);
 			}
 		},
 		'should throw an error': function(err, options) {
-			assert.equal(err, 'JSON config file parsing failed (SyntaxError: Unexpected token t in JSON at position 4)')
+			assert.equal(err, 'JSON config file parsing failed (SyntaxError: Unexpected token t in JSON at position 4)');
 		}
 	}
 }).export(module);
