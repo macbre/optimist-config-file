@@ -1,2 +1,2 @@
 
-module.exports = require('lib/optimist-config-file');
+module.exports = require('./lib/optimist-config-file');
