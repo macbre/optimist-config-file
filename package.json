@@ -31,7 +31,8 @@
   },
   "devDependencies": {
     "js-beautify": "^1.6.8",
-    "jshint": "^2.9.4"
+    "jshint": "^2.9.4",
+    "vows": "^0.7.0"
   },
   "scripts": {
     "test": "vows --spec",
