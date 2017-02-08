@@ -3,11 +3,12 @@ var vows = require('vows'),
 	path = require('path'),
 	program = require('../');
 
-function importFile(filename, argv) {
+function importFile(filename, argv, replacements) {
 	argv = argv || [];
 	argv.push('--config=' + filename);
 	var app = program;
 	app.setConfigFile('config');
+	app.setReplacementVars(replacements);
 	return app.parse(argv);
 }
 
@@ -68,6 +69,25 @@ vows.describe('config file parsing').addBatch({
 		},
 		'should throw an error': function(err, options) {
 			assert.ok(err.indexOf('JSON config file parsing failed (SyntaxError: Unexpected token') === 0);
+		}
+	},
+	'should interpolate environment variables in YAML': {
+		topic: importFile(path.join(fixtures, 'envvars.yaml'), null, {
+			SIMPLE: 'foo'
+		}),
+		'should replace a simple variable': function(err, options) {
+			assert.equal(options.simple, 'foo/bar');
+		},
+		'should allow a default value for a variable': function(err, options) {
+			assert.equal(options.default, 'baz/bar');
+		}
+	},
+	'should not interpolate environment variables in JSON': {
+		topic: importFile(path.join(fixtures, 'envvars.json'), null, {
+			SIMPLE: 'foo'
+		}),
+		'should not replace the variable': function(err, options) {
+			assert.equal(options.simple, '${SIMPLE}');
 		}
 	}
 }).export(module);

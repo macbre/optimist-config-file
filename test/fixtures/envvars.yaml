@@ -1,0 +1,2 @@
+simple: ${SIMPLE}/bar
+default: ${DEFAULT:-baz}/bar
