@@ -29,3 +29,26 @@ const options = program.parse(process.argv);
 
 console.log(options);
 ```
+
+### Example
+
+YAML config file:
+
+```yaml
+banner: Hello, ${USERNAME}! Greetings from ${HOSTNAME:-The Unknown Machine}.
+```
+
+Invocations with environment variables and options:
+
+```sh
+./example.js  --config config.yaml
+Hello, macbre! Greetings from The Unknown Machine.
+
+HOSTNAME=`hostname` ./example.js  --config config.yaml
+Hello, macbre! Greetings from debian.
+
+./example.js  --config config.yaml --banner='foo'
+Hello, macbre! Greetings from The Unknown Machine.
+```
+
+As you can see config file values have precedence over command line ones.
