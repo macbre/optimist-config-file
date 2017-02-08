@@ -39,6 +39,12 @@ vows.describe('module').addBatch({
 			assert.equal(err.message, 'Unknown variable: MYVAR');
 		}
 	},
+	'when called with an escaped environment variable': {
+		topic: replace('foo: $${MYVAR}', {}),
+		'the variable should not be replaced': function(err, replaced) {
+			assert.equal(replaced, 'foo: $${MYVAR}');
+		}
+	},
 	'when called with a string containing a variable with a default value': {
 		topic: replace('foo: ${MYVAR:-baz}', {}),
 		'the default value should be used': function(err, replaced) {
