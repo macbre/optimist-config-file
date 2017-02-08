@@ -71,7 +71,7 @@ vows.describe('config file parsing').addBatch({
 			assert.ok(err.indexOf('JSON config file parsing failed (SyntaxError: Unexpected token') === 0);
 		}
 	},
-	'should interpolate environment variables': {
+	'should interpolate environment variables in YAML': {
 		topic: importFile(path.join(fixtures, 'envvars.yaml'), null, {
 			SIMPLE: 'foo'
 		}),
@@ -80,6 +80,14 @@ vows.describe('config file parsing').addBatch({
 		},
 		'should allow a default value for a variable': function(err, options) {
 			assert.equal(options.default, 'baz/bar');
+		}
+	},
+	'should not interpolate environment variables in JSON': {
+		topic: importFile(path.join(fixtures, 'envvars.json'), null, {
+			SIMPLE: 'foo'
+		}),
+		'should not replace the variable': function(err, options) {
+			assert.equal(options.simple, '${SIMPLE}');
 		}
 	}
 }).export(module);
