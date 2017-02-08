@@ -1,0 +1,1 @@
+banner: Hello, ${USERNAME}! Greetings from ${HOSTNAME:-The Unknown Machine}.
