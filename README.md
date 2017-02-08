@@ -1,4 +1,4 @@
-# optimist-config-file [![Build Status](https://travis-ci.org/macbre/optimist-config-file.svg?branch=master)](https://travis-ci.org/macbre/optimist-config-file)
+# optimist-config-file [![npm version](https://badge.fury.io/js/optimist-config-file.png)](https://badge.fury.io/js/optimist-config-file) [![Build Status](https://travis-ci.org/macbre/optimist-config-file.svg?branch=master)](https://travis-ci.org/macbre/optimist-config-file)
 
 Extends [`optimist` npm module](https://www.npmjs.com/package/optimist) with support for JSON/YAML config file and [Docker's inspired environment variables handling](https://docs.docker.com/compose/environment-variables/).
 
