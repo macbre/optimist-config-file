@@ -50,7 +50,7 @@ vows.describe('module').addBatch({
 			MY_VAR: 'bar'
 		}),
 		'the variable should be replaced': function(err, replaced) {
-			assert.equal(replaced, 'foo: bar')
+			assert.equal(replaced, 'foo: bar');
 		}
 	},
 	'when called with a string containing a variable with a default value': {
