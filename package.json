@@ -1,6 +1,6 @@
 {
   "name": "optimist-config-file",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "author": "macbre <maciej.brencz@gmail.com> (http://macbre.net)",
   "description": "Extends optimist with support for JSON/YAML config file Edit",
   "main": "index.js",
